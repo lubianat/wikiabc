@@ -17,40 +17,30 @@ class AbcPage:
         page = requests.get(self.url)
         soup = BeautifulSoup(page.content, 'html.parser')
 
-        self.birth_date = soup.select("#page > div.page-content > \
+        box_pointer = "#page > div.page-content > \
                                     div > div > div > div:nth-child(1) > \
-                                    div.col-lg-6.profile-page > div > \
+                                    div.col-lg-6.profile-page >  div > "
+
+        self.birth_date = soup.select(box_pointer + " \
                                     div.excerpt > div:nth-child(1) > span")[0].text
 
-        self.member_date = soup.select("#page > div.page-content > \
-                                    div > div > div > div:nth-child(1) > \
-                                    div.col-lg-6.profile-page > div > \
+        self.member_date = soup.select(box_pointer + " \
                                     div.excerpt > div:nth-child(3) > span")[0].text
 
-        self.nacionality = soup.select("#page > div.page-content > \
-                                    div > div > div > div:nth-child(1) > \
-                                    div.col-lg-6.profile-page > div > \
+        self.nacionality = soup.select(box_pointer + " \
                                     div.excerpt > div:nth-child(2) > span")[0].text
 
-        self.name = soup.select("#page > div.page-content > \
-                                    div > div > div > div:nth-child(1) > \
-                                    div.col-lg-6.profile-page > div > h2 """)[0].text
+        self.name = soup.select(box_pointer + "h2 ")[0].text
 
-        self.field = soup.select("#page > div.page-content > \
-                                    div > div > div > div:nth-child(1) > \
-                                    div.col-lg-6.profile-page > div > \
+        self.field = soup.select(box_pointer + " \
                                     div.details > strong """)[0].text
 
         self.title = soup.select("head > title")[0].text
 
-        self.membership = soup.select("#page > div.page-content > \
-                                    div > div > div > div:nth-child(1) > \
-                                    div.col-lg-6.profile-page > div > \
+        self.membership = soup.select(box_pointer + "\
                                     div.details """)[0].text.split(" | ")[-1].lower()
 
-        self.lattes_url = soup.select("#page > div.page-content > \
-                                    div > div > div > div:nth-child(1) > \
-                                    div.col-lg-6.profile-page > div > \
+        self.lattes_url = soup.select(box_pointer + "\
                                     div:nth-child(5) > a """)[0].get('href')
 
 
