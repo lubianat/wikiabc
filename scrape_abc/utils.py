@@ -39,9 +39,11 @@ class AbcPage:
 
         self.membership = soup.select(box_pointer + "\
                                     div.details """)[0].text.split(" | ")[-1].lower()
-
-        self.lattes_url = soup.select(box_pointer + "\
+        try:
+            self.lattes_url = soup.select(box_pointer + "\
                                     div:nth-child(5) > a """)[0].get('href')
+        except:
+            print("No lattes URL.")
 
 
     def print_qs(self, wikidata_id):
@@ -53,16 +55,23 @@ class AbcPage:
 
         print(f'{wikidata_id}|P463|Q2497232|P580|{member_date_wiki}|S854|"{self.url}"')
         print(f'{wikidata_id}|P569|{birth_date_wiki}|S854|"{self.url}"')
-        print(f'{wikidata_id}|P1007|"{self.lattes_url.split("/")[-1]}"|S854|"{self.url}"')
+        if hasattr(self, "lattes_url"):
+            print(f'{wikidata_id}|P1007|"{self.lattes_url.split("/")[-1]}"|S854|"{self.url}"')
 
         if self.nacionality == "Brasileira":
             print(f'{wikidata_id}|P27|Q155|S854|"{self.url}"')
     
+
     def write_wikipage(self, filepath="wikipage"):
 
             today = date.today()
             d1 = today.strftime("%Y-%m-%d")
-
+            
+            if hasattr(self, "lattes_url"):       
+                link_lattes = f"* [{self.lattes_url} Currículo na Plataforma Lattes]"
+            else:
+                link_lattes = ""
+            
             wiki_page = """{{Info/Biografia/Wikidata}}
 
 """ + f"""{self.name} ({self.birth_date}) é uma pesquisadora brasileira, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
@@ -72,7 +81,7 @@ class AbcPage:
 == Links externos ==
 
 * [{self.url}/ Página na Academia Brasileira de Ciências]
-* [{self.lattes_url} Currículo na Plataforma Lattes]
+{link_lattes}
 
 """ + """
 
