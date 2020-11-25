@@ -74,7 +74,7 @@ class AbcPage:
             
             wiki_page = """{{Info/Biografia/Wikidata}}
 
-""" + f"""{self.name} ({self.birth_date}) é uma pesquisadora brasileira, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
+""" + f"""'''{self.name}''' ({self.birth_date}) é uma pesquisadora brasileira, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
 + "<ref>{{Citar web |url=" + self.url + f"/ |titulo={self.title} |acessodata={d1} |lingua=pt-BR" + "}}</ref>" + f"""
 
 
