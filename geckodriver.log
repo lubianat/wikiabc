@@ -154,3 +154,14 @@ _ensureFormattedHostVisible/<@resource:///modules/UrlbarValueFormatter.jsm:105:4
 1606226307899	Marionette	INFO	Stopped listening on port 36011
 1606226307956	Marionette	INFO	Stopped listening on port 43851
 1606226307968	Marionette	INFO	Stopped listening on port 33143
+1606303000182	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileoEiMiR"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1606303017539	Marionette	INFO	Listening on port 39587
+1606303017791	Marionette	WARN	TLS certificate errors will be ignored for this session
+1606303027242	Marionette	INFO	Stopped listening on port 39587
+1606303067533	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileth0cdz"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1606303071388	Marionette	INFO	Listening on port 42283
+1606303071471	Marionette	WARN	TLS certificate errors will be ignored for this session
+1606303077880	Marionette	INFO	Stopped listening on port 42283
+JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
