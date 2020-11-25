@@ -151,3 +151,6 @@ _ensureFormattedHostVisible/<@resource:///modules/UrlbarValueFormatter.jsm:105:4
 
 1606224833224	Marionette	INFO	Listening on port 33143
 1606224833295	Marionette	WARN	TLS certificate errors will be ignored for this session
+1606226307899	Marionette	INFO	Stopped listening on port 36011
+1606226307956	Marionette	INFO	Stopped listening on port 43851
+1606226307968	Marionette	INFO	Stopped listening on port 33143
