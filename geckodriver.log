@@ -165,3 +165,9 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1606303071471	Marionette	WARN	TLS certificate errors will be ignored for this session
 1606303077880	Marionette	INFO	Stopped listening on port 42283
 JavaScript error: resource://gre/modules/UrlClassifierListManager.jsm, line 691: TypeError: this.tablesData[table] is undefined
+1606392627038	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilebrJdaG"
+1606392636329	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofilexBBehZ"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1606392650884	Marionette	INFO	Listening on port 36345
+1606392651206	Marionette	WARN	TLS certificate errors will be ignored for this session
+1606392661621	Marionette	INFO	Stopped listening on port 36345

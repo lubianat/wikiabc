@@ -2,6 +2,15 @@
 from datetime import date, datetime
 import requests
 from bs4 import BeautifulSoup
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import requests
+from bs4 import BeautifulSoup
+
+
 
 class AbcPage:
     """
@@ -98,4 +107,76 @@ class AbcPage:
 
 
 
+def get_members(url):
+   
+    """
 
+    Returns
+
+      members: A dict of ABC members and their URLs in ABC
+
+    """
+    r = requests.get(url)
+    html_content = r.text
+    soup = BeautifulSoup(html_content, 'lxml')
+    link_urls = [a.get('href') for a in soup.find_all('a', href=True)]
+    member_urls = []
+    member_urls = [link for link in link_urls if "http://www.abc.org.br/membro/" in link]
+ 
+    headers = [a.text for a in  soup.find_all('h2')]
+ 
+    members = {}
+ 
+    for i, value in enumerate(headers):
+       members[value] = member_urls[i]
+    
+    
+    return(members)
+
+def get_all_woman_at_abc():
+    all_members = {}
+    for i in range(1,13):
+        print(i)
+        url = f'http://www.abc.org.br/membros/page/{str(i)}/?busca_membro_nome&busca_membro_genero=Feminino&busca_membro_datanascimento_mes&busca_membro_datanascimento_ano&busca_membro_areapesquisa&busca_membro_membrodesde_mes&busca_membro_membrodesde_ano&busca_membro_nacionalidade&busca_membro_regiao&busca_membro_categoria=titular' 
+        members = get_members(url)
+        all_members.update(members)
+    
+    return(all_members)
+    
+
+def save_all_women_at_abc(file="women_at_ABC_25_11_2020.csv"):
+
+    all_members = get_all_woman_at_abc()
+    s = pd.Series(all_members, name = "url")
+
+    s.index.name = "name"
+
+    members_df = s.reset_index()
+
+    members_df.to_csv(file)
+
+
+def save_all_onmc_awards(file="people_at_onmc_in_2007_25_11_2020.csv"):
+    driver = webdriver.Firefox()
+    ordem_url = "https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros"
+
+    driver.get(ordem_url)
+    table_selector = "#layerConteudo > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2)"
+    elem = driver.find_element_by_css_selector(table_selector)
+    soup = BeautifulSoup(elem.get_attribute('innerHTML'))
+    links = soup.find_all('a')
+
+    driver.close()
+    
+    ordem_nacional_member_urls = {}
+
+    for link in links:
+        ordem_nacional_member_urls[link.text] = link["href"]
+        
+    s = pd.Series(ordem_nacional_member_urls, name = "url")
+
+    s.index.name = "name"
+
+    members_onmc_df = s.reset_index()
+
+    members_onmc_df.to_csv(file)
