@@ -1,14 +1,9 @@
-
-from datetime import date, datetime
 import requests
-from bs4 import BeautifulSoup
-import requests
-from bs4 import BeautifulSoup
 import pandas as pd
+from bs4 import BeautifulSoup
+from datetime import date, datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import requests
-from bs4 import BeautifulSoup
 
 
 
@@ -19,10 +14,12 @@ class AbcPage:
     
     """
     def __init__(self, url):
+        """Inits AbcPage with member URL."""
         self.url = url
     
     
     def get_info(self):
+        """Scrapes the Academia Brasileira de Ciencias website for info."""
         page = requests.get(self.url)
         soup = BeautifulSoup(page.content, 'html.parser')
 
@@ -108,10 +105,13 @@ class AbcPage:
 
 
 def get_members(url):
-   
     """
-
-    Returns
+    Extract members from an ABC page.
+    
+    Args:
+        An ABC search result URL. 
+        
+    Returns:
 
       members: A dict of ABC members and their URLs in ABC
 
@@ -120,15 +120,15 @@ def get_members(url):
     html_content = r.text
     soup = BeautifulSoup(html_content, 'lxml')
     link_urls = [a.get('href') for a in soup.find_all('a', href=True)]
+    
     member_urls = []
     member_urls = [link for link in link_urls if "http://www.abc.org.br/membro/" in link]
- 
+    
     headers = [a.text for a in  soup.find_all('h2')]
- 
     members = {}
- 
+    
     for i, value in enumerate(headers):
-       members[value] = member_urls[i]
+        members[value] = member_urls[i]
     
     
     return(members)
