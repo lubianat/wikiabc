@@ -152,6 +152,30 @@ def get_all_woman_at_abc():
     return(all_members)
     
 
+    
+def get_all_men_at_abc():
+    all_members = {}
+    for i in range(1,59):
+        print(i)
+        url = f'http://www.abc.org.br/membros/page/{str(i)}/?busca_membro_nome&busca_membro_genero=Masculino&busca_membro_datanascimento_mes&busca_membro_datanascimento_ano&busca_membro_areapesquisa&busca_membro_membrodesde_mes&busca_membro_membrodesde_ano&busca_membro_nacionalidade&busca_membro_regiao&busca_membro_categoria=titular' 
+        members = get_members(url)
+        all_members.update(members)
+    
+    return(all_members)  
+
+
+def save_all_men_at_abc(file="men_at_ABC_30_11_2020.csv"):
+
+    all_members = get_all_men_at_abc()
+    s = pd.Series(all_members, name = "url")
+
+    s.index.name = "name"
+
+    members_df = s.reset_index()
+
+    members_df.to_csv(file)
+    
+
 def save_all_women_at_abc(file="women_at_ABC_25_11_2020.csv"):
 
     all_members = get_all_woman_at_abc()
