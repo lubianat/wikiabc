@@ -68,7 +68,7 @@ class AbcPage:
             print(f'{wikidata_id}|P27|Q155|S854|"{self.url}"')
     
 
-    def write_wikipage(self, filepath="wikipage", onmc=False):
+    def write_wikipage(self, filepath="wikipage", onmc=False, woman=True):
 
             today = date.today()
             d1 = today.strftime("%Y-%m-%d")
@@ -79,13 +79,20 @@ class AbcPage:
                 link_lattes = ""
             
             if onmc == True:
-                onmc = get_onmctext()
+                onmc = get_onmctext(woman)
             else:
                 onmc = ""
             
+            if woman == True:
+                desinence = "a";
+                adding_desinence = "a"
+            else:
+                desinence = "o"
+                adding_desinence = ""
+            
             wiki_page = """{{Info/Biografia/Wikidata}}
 
-""" + f"""'''{self.name}''' ({self.birth_date}) é uma pesquisadora brasileira, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
+""" + f"""'''{self.name}''' ({self.birth_date}) é um{adding_desinence} pesquisador{adding_desinence} brasileir{desinence}, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
 + "<ref>{{Citar web |url=" + self.url + f"/ |titulo={self.title} |acessodata={d1} |lingua=pt-BR" + "}}</ref>" + f"""
 
 {onmc}
@@ -100,13 +107,22 @@ class AbcPage:
 
             """
 
+             
+                
+                
             with open(filepath, "w+") as f:
                 f.write(wiki_page)
 
 
-def get_onmctext():
-    return("""Foi condecorada na [[Ordem Nacional do Mérito Científico]]. <ref>{{Citar web |url=https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros |titulo=Ministério da Ciência & Tecnologia |data=2007-02-13 |acessodata=2020-11-20 |website=web.archive.org}}</ref>   
+def get_onmctext(woman):
+    if woman == True:
+        desinence = "a";
+    if woman == False:
+        desinence = "o"
+        
+    return(f"""Foi condecorad{desinence} na [[Ordem Nacional do Mérito Científico]]. <ref>"""+"""{{Citar web |url=https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros |titulo=Ministério da Ciência & Tecnologia |data=2007-02-13 |acessodata=2020-11-20 |website=web.archive.org}}</ref>   
     """)
+    
          
                 
                 
