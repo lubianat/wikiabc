@@ -52,7 +52,7 @@ class AbcPage:
             print("No lattes URL.")
 
 
-    def print_qs(self, wikidata_id):
+    def print_qs(self, wikidata_id, woman=True):
         birth_object = datetime.strptime(self.birth_date,"%d/%m/%Y")
         birth_date_wiki = birth_object.strftime("+%Y-%m-%dT00:00:00Z/11")
 
@@ -66,6 +66,11 @@ class AbcPage:
 
         if self.nacionality == "Brasileira":
             print(f'{wikidata_id}|P27|Q155|S854|"{self.url}"')
+        
+        if woman == True:
+            print(f'{wikidata_id}|P21|Q6581072|S854|"{self.url}"')       
+        else:
+            print(f'{wikidata_id}|P21|Q6581097|S854|"{self.url}"')
     
 
     def write_wikipage(self, filepath="wikipage", onmc=False, woman=True):
