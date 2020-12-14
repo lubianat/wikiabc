@@ -59,6 +59,12 @@ class AbcPage:
         member_object = datetime.strptime(self.member_date,"%d/%m/%Y")
         member_date_wiki = member_object.strftime("+%Y-%m-%dT00:00:00Z/11")
 
+        print(f'{wikidata_id}|Lpt|"{self.name}"')
+        print(f'{wikidata_id}|Len|"{self.name}"')
+        print(f'{wikidata_id}|Les|"{self.name}"')
+        print(f'{wikidata_id}|Lde|"{self.name}"')
+        print(f'{wikidata_id}|Lfr|"{self.name}"')
+
         print(f'{wikidata_id}|P463|Q2497232|P580|{member_date_wiki}|S854|"{self.url}"')
         print(f'{wikidata_id}|P569|{birth_date_wiki}|S854|"{self.url}"')
         if hasattr(self, "lattes_url"):
@@ -71,6 +77,9 @@ class AbcPage:
             print(f'{wikidata_id}|P21|Q6581072|S854|"{self.url}"')       
         else:
             print(f'{wikidata_id}|P21|Q6581097|S854|"{self.url}"')
+            print(f'{wikidata_id}|Dpt|"pesquisador"')
+            print(f'{wikidata_id}|Den|"researcher"')
+
     
 
     def write_wikipage(self, filepath="wikipage", onmc=False, woman=True):
