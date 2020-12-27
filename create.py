@@ -19,6 +19,8 @@ print(f"https://author-disambiguator.toolforge.org/names_oauth.php?precise=0&nam
 
 print(f"https://pt.wikipedia.org/wiki/{name.replace(' ', '_')}")
 
+print(f'https://www.google.com/search?q="{name.replace(' ', '_')}"')
+
 qid = input("Enter Wikidata QID for " + name + ": " )
 abc_page.print_qs(qid, woman=False)
 print(f'{qid}|P166|Q3132815|P580|+1994-04-08T00:00:00Z/11|S854|"https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros"')
