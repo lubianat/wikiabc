@@ -19,7 +19,7 @@ print(f"https://author-disambiguator.toolforge.org/names_oauth.php?precise=0&nam
 
 print(f"https://pt.wikipedia.org/wiki/{name.replace(' ', '_')}")
 
-print(f'https://www.google.com/search?q="{name.replace(' ', '_')}"')
+print(f"https://www.google.com/search?q={name.replace(' ', '_')}")
 
 qid = input("Enter Wikidata QID for " + name + ": " )
 abc_page.print_qs(qid, woman=False)
