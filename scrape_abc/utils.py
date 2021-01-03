@@ -126,6 +126,11 @@ class AbcPage:
                 
             with open(filepath, "w+") as f:
                 f.write(wiki_page)
+            
+            print(wiki_page)
+
+
+            print("/n")
 
 
 def get_onmctext(woman):

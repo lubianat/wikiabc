@@ -1,18 +1,13 @@
 import pandas as pd 
 from scrape_abc import utils
-import pywikibot
 
-man_abc_onc_df = pd.read_csv("man_to_create.csv")
+url = "http://www.abc.org.br/membro/renato-de-azevedo-tribuzy/"
 
-for i, row in man_abc_onc_df.iterrows():
-    url = row["url_x"]
-    name = row["name"]
-    abc_page = utils.AbcPage(url)
-    abc_page.get_info()
-    abc_page.write_wikipage(onmc=True, woman=False) 
+abc_page = utils.AbcPage(url)
+abc_page.get_info()
+abc_page.write_wikipage(onmc=True, woman=False) 
     
-    break
-    
+name = "Renato de Azevedo Tribuzy"
     
 print(f"Creating page for {name}")
 
@@ -27,6 +22,7 @@ abc_page.print_qs(qid, woman=False)
 print(f'{qid}|P166|Q3132815|P580|+1994-04-08T00:00:00Z/11|S854|"https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros"')
 
 
+import pywikibot
 
 site = pywikibot.Site("wikidata", "wikidata")
 repo = site.data_repository()
@@ -35,9 +31,3 @@ item = pywikibot.ItemPage(repo, "Q102225626")
 data = [{'site':'ptwiki', 'title': name}]
 
 item.setSitelinks(data)
-
-
-
-man_abc_onc_df = man_abc_onc_df.reset_index(drop=True).drop(0)
-man_abc_onc_df.head()
-man_abc_onc_df.to_csv("man_to_create.csv")
