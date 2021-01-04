@@ -1,6 +1,6 @@
 import pandas as pd 
 from scrape_abc import utils
-
+from datetime import date, datetime
 url = "http://www.abc.org.br/membro/renato-de-azevedo-tribuzy/"
 
 abc_page = utils.AbcPage(url)
@@ -22,12 +22,3 @@ abc_page.print_qs(qid, woman=False)
 print(f'{qid}|P166|Q3132815|P580|+1994-04-08T00:00:00Z/11|S854|"https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros"')
 
 
-import pywikibot
-
-site = pywikibot.Site("wikidata", "wikidata")
-repo = site.data_repository()
-item = pywikibot.ItemPage(repo, "Q102225626")
-
-data = [{'site':'ptwiki', 'title': name}]
-
-item.setSitelinks(data)
