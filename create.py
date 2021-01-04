@@ -29,6 +29,8 @@ abc_page.print_qs(qid, woman=False)
 
 ####### Pywikibot integration #######
 
+print("===== Starting pywikibot =====")
+
 def convert_date_to_pywiki(date):
     datetime_object = datetime.strptime(date,"%d/%m/%Y")
 
@@ -55,16 +57,23 @@ ref_url = pywikibot.Claim(repo, u'P854')
 ref_url.setTarget(abc_page.url)
 
 
-# Add birth date
+print("===== Adding birth date =====")
 
-dateclaim = pywikibot.Claim(repo, u'P569')
-dateclaim.setTarget(convert_date_to_pywiki(abc_page.birth_date))
-item.addClaim(dateclaim, summary=u'Adding dateOfBirth')
+try:
+    dateclaim = pywikibot.Claim(repo, u'P569')
+    dateclaim.setTarget(convert_date_to_pywiki(abc_page.birth_date))
+    item.addClaim(dateclaim, summary=u'Adding dateOfBirth')
 
-dateclaim.addSources([ref_url], summary=u'Adding source')
+    dateclaim.addSources([ref_url], summary=u'Adding source')
+except Exception as e:
+  print(e)
+finally:
+    pass
 
 
-# Add member of ABC with date
+print("===== Adding membership of ABC =====")
+ref_url = pywikibot.Claim(repo, u'P854')
+ref_url.setTarget(abc_page.url)
 try:
     claim_member = pywikibot.Claim(repo, u'P463')
     target = pywikibot.ItemPage(repo, u"Q2497232") # ABC
@@ -81,7 +90,10 @@ except Exception as e:
 finally:
     pass
 
-# Add National Order of Scientific Merit
+
+print("===== Adding National Order of Scientific Merit award =====")
+ref_url = pywikibot.Claim(repo, u'P854')
+ref_url.setTarget(abc_page.url)
 try:
     claim_order = pywikibot.Claim(repo, u'P166')
     target = pywikibot.ItemPage(repo, u"Q3132815") # ABC
@@ -94,8 +106,10 @@ except Exception as e:
 finally:
     pass
 
-# Add gender 
 
+print("===== Adding gender =====")
+ref_url = pywikibot.Claim(repo, u'P854')
+ref_url.setTarget(abc_page.url)
 try:
     gender_claim = pywikibot.Claim(repo, u'P21')
 
@@ -113,7 +127,9 @@ finally:
     pass
 
 
-# Add Lattes URL
+print("===== Adding Lattes URL =====")
+ref_url = pywikibot.Claim(repo, u'P854')
+ref_url.setTarget(abc_page.url)
 try:
     if hasattr(abc_page, "lattes_url"):
         lattes_claim = pywikibot.Claim(repo, u'P1007')
@@ -126,7 +142,10 @@ finally:
     pass
 
 
-# Add nationality
+
+print("===== Adding nationality =====")
+ref_url = pywikibot.Claim(repo, u'P854')
+ref_url.setTarget(abc_page.url)
 try:
     if abc_page.nacionality == "Brasileira":
         nationality_claim = pywikibot.Claim(repo, u'P27')
@@ -139,6 +158,7 @@ except Exception as e:
 finally:
     pass
 
+print("===== Done =====")
 
 # man_abc_onc_df = man_abc_onc_df.reset_index(drop=True).drop(0)
 # man_abc_onc_df.head()
