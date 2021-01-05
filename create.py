@@ -160,6 +160,6 @@ finally:
 
 print("===== Done =====")
 
-# man_abc_onc_df = man_abc_onc_df.reset_index(drop=True).drop(0)
-# man_abc_onc_df.head()
-# man_abc_onc_df.to_csv("man_to_create.csv")
+man_abc_onc_df = man_abc_onc_df.reset_index(drop=True).drop(0)
+man_abc_onc_df.head()
+man_abc_onc_df.to_csv("man_to_create.csv")
