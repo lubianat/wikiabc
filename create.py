@@ -92,15 +92,11 @@ finally:
 
 
 print("===== Adding National Order of Scientific Merit award =====")
-ref_url = pywikibot.Claim(repo, u'P854')
-ref_url.setTarget(abc_page.url)
 try:
     claim_order = pywikibot.Claim(repo, u'P166')
     target = pywikibot.ItemPage(repo, u"Q3132815") # ABC
     claim_order.setTarget(target) #Set the target value in the local object.
-    item.addClaim(claim_order, summary=u'Adding claim') 
-    claim_order.addSources([ref_url], summary=u'Adding source')
-    
+    item.addClaim(claim_order, summary=u'Adding claim')     
 except Exception as e:
   print(e)
 finally:
