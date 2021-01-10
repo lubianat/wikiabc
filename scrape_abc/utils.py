@@ -82,29 +82,42 @@ class AbcPage:
 
     
 
-    def write_wikipage(self, filepath="wikipage", onmc=False, woman=True):
+    def write_wikipage(self, filepath="wikipage", onmc="", woman=True):
+        """
+            onmc: String of the class in the National Order of Scientific Merit. 
+            Can be either "great-cross", "comendador" or "".
+        """
 
-            today = date.today()
-            d1 = today.strftime("%Y-%m-%d")
-            
-            if hasattr(self, "lattes_url"):       
-                link_lattes = f"* [{self.lattes_url} Currículo na Plataforma Lattes]"
-            else:
-                link_lattes = ""
-            
-            if onmc == True:
-                onmc = get_onmctext(woman)
-            else:
-                onmc = ""
-            
-            if woman == True:
-                desinence = "a";
-                adding_desinence = "a"
-            else:
-                desinence = "o"
-                adding_desinence = ""
-            
-            wiki_page = """{{Info/Biografia/Wikidata}}
+        today = date.today()
+        d1 = today.strftime("%Y-%m-%d")
+        
+        if hasattr(self, "lattes_url"):       
+            link_lattes = f"* [{self.lattes_url} Currículo na Plataforma Lattes]"
+        else:
+            link_lattes = ""
+        
+
+        if onmc == "great-cross":
+            onmc_complement = "com a Grã-Cruz da "
+            onmc = get_onmctext(woman, onmc_complement)
+        elif onmc == "comendador": 
+            onmc_complement = "com a comenda da "
+            onmc = get_onmctext(woman, onmc_complement)
+
+        else:
+            onmc_complement = ""
+
+        if woman == True:
+            desinence = "a";
+            adding_desinence = "a"
+        else:
+            desinence = "o"
+            adding_desinence = ""
+        
+
+
+
+        wiki_page = """{{Info/Biografia/Wikidata}}
 
 """ + f"""'''{self.name}''' ({self.birth_date}) é um{adding_desinence} pesquisador{adding_desinence} brasileir{desinence}, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
 + "<ref>{{Citar web |url=" + self.url + f"/ |titulo={self.title} |acessodata={d1} |lingua=pt-BR" + "}}</ref>" + f"""
@@ -124,22 +137,22 @@ class AbcPage:
              
                 
                 
-            with open(filepath, "w+") as f:
-                f.write(wiki_page)
-            
-            print(wiki_page)
+        with open(filepath, "w+") as f:
+            f.write(wiki_page)
+        
+        print(wiki_page)
 
 
-            print("/n")
+        print("/n")
 
 
-def get_onmctext(woman):
+def get_onmctext(woman,onmc_complement):
     if woman == True:
         desinence = "a";
     if woman == False:
         desinence = "o"
         
-    return(f"""Foi condecorad{desinence} na [[Ordem Nacional do Mérito Científico]]. <ref>"""+"""{{Citar web |url=https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros |titulo=Ministério da Ciência & Tecnologia |data=2007-02-13 |acessodata=2020-11-20 |website=web.archive.org}}</ref>   
+    return(f"""Foi condecorad{desinence} {onmc_complement} [[Ordem Nacional do Mérito Científico]]. <ref>"""+"""{{Citar web |url=https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros |titulo=Ministério da Ciência & Tecnologia |data=2007-02-13 |acessodata=2020-11-20 |website=web.archive.org}}</ref>   
     """)
     
          

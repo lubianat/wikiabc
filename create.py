@@ -3,7 +3,7 @@ from scrape_abc import utils
 import pywikibot
 from datetime import date, datetime
 
-man_abc_onc_df = pd.read_csv("man_to_create.csv")
+man_abc_onc_df = pd.read_csv("to_create_great_cross_men_06_01_2021.csv")
 
 for i, row in man_abc_onc_df.iterrows():
     url = row["url_x"]
@@ -158,4 +158,4 @@ print("===== Done =====")
 
 man_abc_onc_df = man_abc_onc_df.reset_index(drop=True).drop(0)
 man_abc_onc_df.head()
-man_abc_onc_df.to_csv("man_to_create.csv")
+man_abc_onc_df.to_csv("to_create_great_cross_men_06_01_2021.csv")
