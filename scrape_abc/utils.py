@@ -98,14 +98,18 @@ class AbcPage:
         
 
         if onmc == "great-cross":
-            onmc_complement = "com a Grã-Cruz da "
+            onmc_complement = "com a Grã-Cruz da"
+            onmc_categoria = "[[Categoria:Grã-Cruz_da_Ordem_Nacional_do_Mérito_Científico]]"
             onmc = get_onmctext(woman, onmc_complement)
         elif onmc == "comendador": 
-            onmc_complement = "com a comenda da "
+            onmc_complement = "com a comenda da"
+            onmc_categoria = "[[Categoria:Ordem_Nacional_do_Mérito_Científico]]"
             onmc = get_onmctext(woman, onmc_complement)
 
         else:
             onmc_complement = ""
+            onmc = ""
+            onmc_categoria = ""
 
         if woman == True:
             desinence = "a";
@@ -131,8 +135,7 @@ class AbcPage:
 
 {{Esboço-cientista}}{{Controle de autoridade}}
 [[Categoria:Membros da Academia Brasileira de Ciências]]
-
-            """
+""" + onmc_categoria 
 
              
                 
@@ -152,7 +155,7 @@ def get_onmctext(woman,onmc_complement):
     if woman == False:
         desinence = "o"
         
-    return(f"""Foi condecorad{desinence} {onmc_complement} [[Ordem Nacional do Mérito Científico]]. <ref>"""+"""{{Citar web |url=https://web.archive.org/web/20070213055821/http://www.mct.gov.br/index.php/content/view/11199.html?area=allAreas&categoria=allMembros |titulo=Ministério da Ciência & Tecnologia |data=2007-02-13 |acessodata=2020-11-20 |website=web.archive.org}}</ref>   
+    return(f"""Foi condecorad{desinence} {onmc_complement} [[Ordem Nacional do Mérito Científico]]. <ref>"""+"""{{Citar web |url=https://canalciencia.ibict.br/noticias/item/237-ordem-nacional-do-merito-cientifico |titulo=Ordem Nacional do Mérito Científico |acessodata=2021-01-10}}</ref>   
     """)
     
          
