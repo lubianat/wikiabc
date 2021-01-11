@@ -103,7 +103,7 @@ class AbcPage:
             onmc = get_onmctext(woman, onmc_complement)
             onmc_see_also= """
 == Veja também ==
-* [[Lista_de_agraciados_com_a_Grã-Cruz_da_Ordem_Nacional_do_Mérito_Científico]]
+* [[Lista de agraciados com a Grã-Cruz da Ordem Nacional do Mérito Científico]]
             """
         elif onmc == "comendador": 
             onmc_complement = "com a comenda da"
@@ -111,7 +111,7 @@ class AbcPage:
             onmc = get_onmctext(woman, onmc_complement)
             onmc_see_also= """
 == Veja também ==
-* [[Lista_de_agraciados_na_Ordem_Nacional_do_Mérito_Científico_-_Comendador]]
+* [[Lista de agraciados na Ordem Nacional do Mérito Científico - Comendador]]
             """
 
         else:
