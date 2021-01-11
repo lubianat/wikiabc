@@ -101,15 +101,24 @@ class AbcPage:
             onmc_complement = "com a Grã-Cruz da"
             onmc_categoria = "[[Categoria:Grã-Cruz_da_Ordem_Nacional_do_Mérito_Científico]]"
             onmc = get_onmctext(woman, onmc_complement)
+            onmc_see_also= """
+== Veja também ==
+* [[Lista_de_agraciados_com_a_Grã-Cruz_da_Ordem_Nacional_do_Mérito_Científico]]
+            """
         elif onmc == "comendador": 
             onmc_complement = "com a comenda da"
             onmc_categoria = "[[Categoria:Ordem_Nacional_do_Mérito_Científico]]"
             onmc = get_onmctext(woman, onmc_complement)
+            onmc_see_also= """
+== Veja também ==
+* [[Lista_de_agraciados_na_Ordem_Nacional_do_Mérito_Científico_-_Comendador]]
+            """
 
         else:
             onmc_complement = ""
             onmc = ""
             onmc_categoria = ""
+            onmc_see_also= ""
 
         if woman == True:
             desinence = "a";
@@ -127,6 +136,8 @@ class AbcPage:
 + "<ref>{{Citar web |url=" + self.url + f"/ |titulo={self.title} |acessodata={d1} |lingua=pt-BR" + "}}</ref>" + f"""
 
 {onmc}
+
+{onmc_see_also}
 == Links externos ==
 * [{self.url}/ Página na Academia Brasileira de Ciências]
 {link_lattes}
