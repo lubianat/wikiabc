@@ -3,14 +3,14 @@ from scrape_abc import utils
 import pywikibot
 from datetime import date, datetime
 
-man_abc_onc_df = pd.read_csv("to_create_great_cross_men_06_01_2021.csv")
+man_abc_onc_df = pd.read_csv("to_create_comendador_men_06_01_2021.csv")
 
 for i, row in man_abc_onc_df.iterrows():
     url = row["url"]
     name = row["name"]
     abc_page = utils.AbcPage(url)
     abc_page.get_info()
-    abc_page.write_wikipage(onmc="great-cross", woman=False) 
+    abc_page.write_wikipage(onmc="comendador", woman=False) 
     
     break
     
