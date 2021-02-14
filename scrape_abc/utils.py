@@ -4,8 +4,8 @@ from bs4 import BeautifulSoup
 from datetime import date, datetime
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-
-
+import locale
+locale.setlocale(locale.LC_TIME, 'pt_BR.UTF-8')
 
 class AbcPage:
     """
@@ -89,13 +89,16 @@ class AbcPage:
         """
 
         today = date.today()
+
         d1 = today.strftime("%Y-%m-%d")
         
         if hasattr(self, "lattes_url"):       
             link_lattes = f"* [{self.lattes_url} Currículo na Plataforma Lattes]"
         else:
             link_lattes = ""
-        
+
+        birth_object = datetime.strptime(self.birth_date,"%d/%m/%Y")
+        birth_date__for_page = birth_object.strftime("[[%d de %B]] de [[%Y]]")
 
         if onmc == "great-cross":
             onmc_complement = "com a Grã-Cruz da"
@@ -130,7 +133,7 @@ class AbcPage:
 
         wiki_page = """{{Info/Biografia/Wikidata}}
 
-""" + f"""'''{self.name}''' ({self.birth_date}) é um{adding_desinence} pesquisador{adding_desinence} brasileir{desinence}, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
+""" + f"""'''{self.name}''' ({birth_date__for_page}) é um{adding_desinence} pesquisador{adding_desinence} brasileir{desinence}, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
 + "<ref>{{Citar web |url=" + self.url + f"/ |titulo={self.title} |acessodata={d1} |lingua=pt-BR" + "}}</ref>" + f"""
 
 {onmc}

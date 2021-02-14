@@ -263,3 +263,12 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 JavaScript error: https://canalciencia.ibict.br/noticias/item/237-ordem-nacional-do-merito-cientifico, line 17: ReferenceError: Cufon is not defined
 JavaScript warning: https://vlibras.gov.br/app2/vlibras-plugin.js, line 81: unreachable code after return statement
 1610285918932	Marionette	INFO	Stopped listening on port 36329
+1613317349278	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofileLmoogS"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613317369896	Marionette	INFO	Listening on port 37401
+1613317370167	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613317370183	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: https://canalciencia.ibict.br/noticias/item/237-ordem-nacional-do-merito-cientifico, line 17: ReferenceError: Cufon is not defined
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+JavaScript warning: https://vlibras.gov.br/app2/vlibras-plugin.js, line 81: unreachable code after return statement
+1613317496261	Marionette	INFO	Stopped listening on port 37401
