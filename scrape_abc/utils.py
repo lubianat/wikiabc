@@ -100,20 +100,21 @@ class AbcPage:
         birth_object = datetime.strptime(self.birth_date,"%d/%m/%Y")
         birth_date__for_page = birth_object.strftime("[[%d de %B]] de [[%Y]]")
 
+        member_object = datetime.strptime(self.member_date,"%d/%m/%Y")
+        member_date_for_page = member_object.strftime("%Y")
+
         if onmc == "great-cross":
             onmc_complement = "com a Grã-Cruz da"
             onmc_categoria = "[[Categoria:Grã-Cruz_da_Ordem_Nacional_do_Mérito_Científico]]"
             onmc = get_onmctext(woman, onmc_complement)
-            onmc_see_also= """== Veja também ==
-* [[Lista de agraciados com a Grã-Cruz da Ordem Nacional do Mérito Científico]]
-            """
+            onmc_see_also= f"""== Veja também ==
+* [[Lista de agraciados com a Grã-Cruz da Ordem Nacional do Mérito Científico]]"""
         elif onmc == "comendador": 
             onmc_complement = "com a comenda da"
             onmc_categoria = "[[Categoria:Ordem_Nacional_do_Mérito_Científico]]"
             onmc = get_onmctext(woman, onmc_complement)
             onmc_see_also= """== Veja também ==
-* [[Lista de agraciados na Ordem Nacional do Mérito Científico - Comendador]]
-            """
+* [[Lista de agraciados na Ordem Nacional do Mérito Científico - Comendador]]"""
 
         else:
             onmc_complement = ""
@@ -133,11 +134,13 @@ class AbcPage:
 
         wiki_page = """{{Info/Biografia/Wikidata}}
 
-""" + f"""'''{self.name}''' ({birth_date__for_page}) é um{adding_desinence} pesquisador{adding_desinence} brasileir{desinence}, {self.membership} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {self.member_date}.""" \
-+ "<ref>{{Citar web |url=" + self.url + f"/ |titulo={self.title} |acessodata={d1} |lingua=pt-BR" + "}}</ref>" + f"""
+""" + f"""'''{self.name}''' ({birth_date__for_page}) é um{adding_desinence} pesquisador{adding_desinence} brasileir{desinence}, {self.membership.split(" ")[1]} da [[Academia Brasileira de Ciências]] na área de {self.field} desde {member_date_for_page}.""" \
++ " <ref>{{Citar web |url=" + self.url + f"/ |titulo={self.title} |acessodata={d1} |lingua=pt-BR" + "}}</ref>" + f"""
 
 {onmc}
 {onmc_see_also}
+* [[Lista de membros titulares da Academia Brasileira de Ciências empossados em {member_date_for_page}]]
+
 == Links externos ==
 * [{self.url}/ Página na Academia Brasileira de Ciências]
 {link_lattes}
