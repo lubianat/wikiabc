@@ -272,3 +272,19 @@ JavaScript error: https://canalciencia.ibict.br/noticias/item/237-ordem-nacional
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
 JavaScript warning: https://vlibras.gov.br/app2/vlibras-plugin.js, line 81: unreachable code after return statement
 1613317496261	Marionette	INFO	Stopped listening on port 37401
+1613476892667	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile8wOo85"
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+1613476908168	Marionette	INFO	Listening on port 46021
+1613476908515	Marionette	WARN	TLS certificate errors will be ignored for this session
+1613476908535	Marionette	ERROR	[18] No reply from Marionette:Register
+JavaScript error: https://canalciencia.ibict.br/noticias/item/237-ordem-nacional-do-merito-cientifico, line 17: ReferenceError: Cufon is not defined
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new Error("", "(unknown module)"))
+JavaScript warning: https://vlibras.gov.br/app2/vlibras-plugin.js, line 81: unreachable code after return statement
+1613476942336	Marionette	ERROR	[33] No reply from Marionette:Register
+1613476943305	Marionette	ERROR	[35] No reply from Marionette:Register
+1613476944538	Marionette	ERROR	[37] No reply from Marionette:Register
+1613476945081	Marionette	ERROR	[39] No reply from Marionette:Register
+1613476949564	Marionette	INFO	Stopped listening on port 46021
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
