@@ -4,14 +4,14 @@ from scrape_abc import utils
 import pywikibot
 from datetime import date, datetime
 
-women_abc_onc_df = pd.read_csv("to_create_comendador_women_16_01_2021.csv")
+men_abc_onc_df = pd.read_csv("to_create_comendador_men_23_02_2021.csv")
 
-for i, row in women_abc_onc_df.iterrows():
+for i, row in men_abc_onc_df.iterrows():
     url = row["url"]
     name = row["name"]
     abc_page = utils.AbcPage(url)
     abc_page.get_info()
-    abc_page.write_wikipage(onmc="great-cross", woman=True) 
+    abc_page.write_wikipage(onmc="comendador", woman=False) 
     
     break
     
@@ -25,7 +25,7 @@ print(f"https://pt.wikipedia.org/wiki/{name.replace(' ', '_')}")
 print(f"https://www.google.com/search?q={name.replace(' ', '_')}")
 
 qid = input("Enter Wikidata QID for " + name + ": " )
-abc_page.print_qs(qid, woman=True)
+abc_page.print_qs(qid, woman=False)
 
 
 ####### Pywikibot integration #######
@@ -41,7 +41,7 @@ def convert_date_to_pywiki(date):
     py_date = pywikibot.WbTime(year=int(y), month=int(m), day=int(d))
     return py_date
 
-woman = True
+woman = False
 
 site = pywikibot.Site("wikidata", "wikidata")
 repo = site.data_repository()
@@ -157,6 +157,6 @@ finally:
 
 print("===== Done =====")
 
-women_abc_onc_df = women_abc_onc_df.reset_index(drop=True).drop(0)
-women_abc_onc_df.head()
-women_abc_onc_df.to_csv("to_create_comendador_women_16_01_2021.csv")
+men_abc_onc_df = men_abc_onc_df.reset_index(drop=True).drop(0)
+men_abc_onc_df.head()
+men_abc_onc_df.to_csv("to_create_comendador_men_23_02_2021")
