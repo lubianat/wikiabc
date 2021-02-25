@@ -303,3 +303,8 @@ console.log: WebExtensions: reset-default-search: No addons in our list are inst
 1614168913563	Marionette	ERROR	[41] No reply from Marionette:Register
 1614168913772	Marionette	ERROR	[43] No reply from Marionette:Register
 1614168914076	Marionette	ERROR	[45] No reply from Marionette:Register
+[GFX1-]: Failed to connect WebRenderBridgeChild.
+1614180938592	Marionette	INFO	Stopped listening on port 41703
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
